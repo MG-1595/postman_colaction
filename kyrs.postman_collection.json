@@ -1,0 +1,510 @@
+{
+	"info": {
+		"_postman_id": "3f7e34fa-e94d-4816-a471-c5b62baf4eef",
+		"name": "kyrs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://swapi.dev/api/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//1. Correct response formst JOSN ",
+							"pm.test(\"Correct response formst JOSN\", function() {",
+							"    pm.response.to.have.jsonBody()",
+							"})",
+							"//2. We have all the declared fields in the response ",
+							"pm.test(\"Check that we have all the declared fields in the response\", function(){",
+							"    const josnData = pm.response.json();",
+							"  pm.expect(josnData).to.have.property(\"people\");",
+							"  pm.expect(josnData).to.have.property(\"planets\");",
+							"  pm.expect(josnData).to.have.property(\"films\");",
+							"  pm.expect(josnData).to.have.property(\"species\");",
+							"  pm.expect(josnData).to.have.property(\"vehicles\");",
+							"  pm.expect(josnData).to.have.property(\"starships\");   ",
+							"})",
+							"//3. Fiald value is not NULL",
+							"pm.test(\"Check if value is not NULL\",function(){",
+							"    var josnData = pm.response.json();",
+							"    pm.expect(josnData.people).not.equal(null);",
+							"    pm.expect(josnData.planets).not.equal(null);",
+							"    pm.expect(josnData.films).not.equal(null);",
+							"    pm.expect(josnData.species).not.equal(null);",
+							"    pm.expect(josnData.vehicles).not.equal(null);",
+							"    pm.expect(josnData.starships).not.equal(null);",
+							"})",
+							"//4 Check is value is not empty ",
+							"pm.test (\"Check is value is not empty\", function(){",
+							"   var josnData = pm.response.json();",
+							"    pm.expect(josnData.people).not.equal(\"\");",
+							"    pm.expect(josnData.planets).not.equal(\"\");",
+							"    pm.expect(josnData.films).not.equal(\"\");",
+							"    pm.expect(josnData.species).not.equal(\"\");",
+							"    pm.expect(josnData.vehicles).not.equal(\"\");",
+							"    pm.expect(josnData.starships).not.equal(\"\");  ",
+							"})",
+							"//5.Check if field correspondns to a specific vaule",
+							"pm.test (\"Check if field correspondns to a specific vaule\", function(){",
+							"   var josnData = pm.response.json();  ",
+							"   pm.expect(josnData.people).to.equal(\"http://swapi.dev/api/people/\");",
+							"   pm.expect(josnData.planets).to.equal(\"http://swapi.dev/api/planets/\");",
+							"   pm.expect(josnData.films).to.equal(\"http://swapi.dev/api/films/\");",
+							"   pm.expect(josnData.species).to.equal(\"http://swapi.dev/api/species/\");",
+							"   pm.expect(josnData.vehicles).to.equal(\"http://swapi.dev/api/vehicles/\");",
+							"   pm.expect(josnData.starships).to.equal(\"http://swapi.dev/api/starships/\");",
+							"})",
+							"//6. Status code is 200",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"//7. Status massege is ok",
+							"pm.test(\"Status message is OK\", function(){",
+							"    pm.response.to.have.status(\"OK\");",
+							"})",
+							"//8. Response time is less than 1000ms",
+							"pm.test(\"Response time is less than 1000ms\", function(){",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)",
+							"})",
+							"//9.there is a specific header in response ",
+							"pm.test(\"there is a specific header in response\", function(){",
+							"    pm.response.to.have.header(\"Content-Type\")",
+							"})",
+							"//10. Content-Type value is application/json",
+							"pm.test (\"Content-Type value is application/json\", function(){",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json\")",
+							"})",
+							"//11. Cookies exists",
+							"pm.test(\"Cookies exists\", function(){",
+							"    pm.cookies.has(\"Cookie_9\")",
+							"})",
+							"//12. Cookie has value",
+							"pm.test(\"Cookie has value\", function(){",
+							"    try{",
+							"        var MY_COOKIE = pm.cookies.get(\"Cookie_9\");",
+							"        console.log(MY_COOKIE);",
+							"    } catch (e) {",
+							"        console.log(\"SOME PROBLEM WITH COOKIE -> +e\")",
+							"    }",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+					"protocol": "https",
+					"host": [
+						"933632f0-7960-4ee8-a577-678181eae3a7",
+						"mock",
+						"pstmn",
+						"io"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Kirill\"}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io/action",
+							"protocol": "https",
+							"host": [
+								"933632f0-7960-4ee8-a577-678181eae3a7",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 19:02:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=4b2eda59dc2c6b0e"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=b2f92cc51e7cbf4e"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1620846186"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"Kirill\",\n        \"status\": \"created\"\n        \"message\": \"success\"\n    }\n}"
+				},
+				{
+					"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+							"protocol": "https",
+							"host": [
+								"933632f0-7960-4ee8-a577-678181eae3a7",
+								"mock",
+								"pstmn",
+								"io"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 18:51:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=c918cd04d98f5599"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=1de8919169931bb0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1620845578"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"test\",\n        \"message\": \"success\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Kirill\"}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io/action",
+					"protocol": "https",
+					"host": [
+						"933632f0-7960-4ee8-a577-678181eae3a7",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"action"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+							"protocol": "https",
+							"host": [
+								"933632f0-7960-4ee8-a577-678181eae3a7",
+								"mock",
+								"pstmn",
+								"io"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 18:51:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=c918cd04d98f5599"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=1de8919169931bb0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1620845578"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"test\",\n        \"message\": \"success\"\n    }\n}"
+				},
+				{
+					"name": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Kirill\"}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://933632f0-7960-4ee8-a577-678181eae3a7.mock.pstmn.io/action",
+							"protocol": "https",
+							"host": [
+								"933632f0-7960-4ee8-a577-678181eae3a7",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 19:02:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=4b2eda59dc2c6b0e"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=b2f92cc51e7cbf4e"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1620846186"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"Kirill\",\n        \"status\": \"created\"\n        \"message\": \"success\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
